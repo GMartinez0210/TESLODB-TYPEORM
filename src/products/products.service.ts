@@ -49,7 +49,7 @@ export class ProductsService {
   async findOne(query: ObjectLiteral) {
     try {
       const queryBuilder = this.productRepository.createQueryBuilder('product');
-      queryBuilder.where('UPPER(product.title) :title', {
+      queryBuilder.where('UPPER(product.title) = :title', {
         title: query.title.toUpperCase(),
       });
       queryBuilder.orWhere('UPPER(product.slug) = :slug', {
